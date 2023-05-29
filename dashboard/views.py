@@ -5,8 +5,8 @@ from django.http import HttpResponse
 
 
 def index(request):
-    return HttpResponse('<h1 style="color: red">This is the index page</h>')
+    return render(request, 'dashboard/index.html')
 
 
 def staff(request):
-    return HttpResponse('This is the staff page')
+    return render(request,'dasboard/staff.html')
