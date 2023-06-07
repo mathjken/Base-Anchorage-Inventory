@@ -9,4 +9,10 @@ def index(request):
 
 
 def staff(request):
-    return render(request,'dasboard/staff.html')
+    return render(request,'dashboard/staff.html')
+
+def product(request):
+    return render(request,'dashboard/product.html')
+
+def order(request):
+    return render(request,'dashboard/order.html')
