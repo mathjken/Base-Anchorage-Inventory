@@ -8,34 +8,24 @@ CATEGORY = (
     ('Food', 'Food'),
 )
 
-
 class Product(models.Model):
     name = models.CharField(max_length=100, null=True)
+    category = models.CharField(max_length=20, choices=CATEGORY)
     quantity = models.PositiveIntegerField(null=True)
-    category = models.CharField(max_length=50, choices=CATEGORY, null=True)
-
-    def __str__(self):
-        return f'{self.name}-{self.quantity}'
-
-class Order(models.Model):
-    name = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    order_quantity = models.PositiveIntegerField(null=True)
-    date = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name_plural = 'Product'
 
     def __str__(self):
-        return f'{self.product} ordered by {self.staff.username}'
-    
+        return f'{self.name}-{self.quantity}'
 class Order(models.Model):
-    name = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
-    customer = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
-    order_quantity = models.PositiveIntegerField(null=True)
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, null=True)
+    staff = models.ForeignKey(User, models.CASCADE, null=True)
+    order_quantity = models.PositiveBigIntegerField(null=True)
+    date = models.DateTimeField(auto_now_add=True)
 
-class Meta:
+    class Meta:
         verbose_name_plural = 'Order'
 
-def __str__(self):
+    def __str__(self):
         return f'{self.product} ordered by {self.staff.username}'
