@@ -32,15 +32,16 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "crispy_forms",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    'dashboard.apps.DashboardConfig',
-    'user.apps.UserConfig',
-    'crispy_forms',
+    "dashboard.apps.DashboardConfig",
+    "user.apps.UserConfig",
+    "bootstrap5",
 ]
 
 MIDDLEWARE = [
@@ -102,7 +103,10 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
@@ -139,3 +143,10 @@ MEDIA_URL = '/media/'
 LOGIN_REDIRECT_URL = 'dashboard-index'
 
 LOGIN_URL = 'user-login'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 465
+#EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'ogujohnkennedy@gmail.com'
+EMAIL_HOST_PASSWORD = 'bykpuczfsuazgtaw'

@@ -9,12 +9,32 @@
 <div class="container">
     <div class="row my-4">
         <div class="col-md-4">
+            {% for message in messages %}
+            {% if message %}
+            <div class="alet alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+
             <div class="border bg-white p-3">
                 <h4>Add Products</h4>
                 <hr>
-                <form method="POST">
-                    {% csrf_token%}
-                    {{ form }}
+                <form method="post">
+                    {% csrf_token %}
+                    {% for field in form %}
+                      <div class="mb-3">
+                        <label for="{{ field.id_for_label }}" class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                        {% if field.errors %}
+                          <ul class="errorlist">
+                            {% for error in field.errors %}
+                              <li>{{ error }}</li>
+                            {% endfor %}
+                          </ul>
+                        {% endif %}
+                      </div>
+                    {% endfor %}
                     <input class="btn btn-success btn-block" type="submit" value="Add Product">
                 </form>
             </div>
@@ -23,7 +43,7 @@
             <table class="table bg-white">
                 <thead class="bg-info">
                     <tr class="text-white">
-                        <th scope="col">#</th>
+                        
                         <th scope="col">Name</th>
                         <th scope="col">Category</th>
                         <th scope="col">Quantity</th>
@@ -33,7 +53,7 @@
                 <tbody>
                     {% for item in items %}
                     <tr>
-                        <th scope="row">1</th>
+                        
                         <td>{{ item.name }}</td>
                         <td>{{ item.category}}</td>
                         <td>{{ item.quantity }}</td>
