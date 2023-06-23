@@ -90,7 +90,7 @@ DATABASES = {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "inventoryappdb",
         "USER": "postgres",
-        "PASSWORD": "fileee",
+        "PASSWORD": ,
         "PORT": "5433",
         "HOST": "localhost",
     }
@@ -160,4 +160,4 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 465
 #EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'ogujohnkennedy@gmail.com'
-EMAIL_HOST_PASSWORD = 'bykpuczfsuazgtaw'
+EMAIL_HOST_PASSWORD =
